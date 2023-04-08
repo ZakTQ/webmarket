@@ -1,0 +1,19 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+RewriteBase /rootDir/
+
+# Protect application and system files from being viewed
+RewriteRule ^(application|modules|system) - [F,L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f если то что запросил пользователь не является файлом то перенаправить на index.php 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/
+RewriteRule .* index.php/$0 [PT,L]
+
+//////
+
+Опция magic _ quotes _ gpc (волшебные кавычки) включает экранирование данных PHP-скрипта. При этом обратный слэш (), одинарные (') и двойные кавычки (") автоматически экранируются. Для включения magic _ quotes _ gpc введите: magic_quotes_gpc= 1. Для отключения magic _ quotes _ gpc введите: magic_quotes_gpc = 0 mail.add_x_header. Опция mail. add _ x _ header включает логирование отправки почты из скриптов сайта.
